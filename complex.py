@@ -18,7 +18,6 @@ class ComplexNumber:
     def __add__(self, other): return ComplexNumber(self.a+other.a, self.b+other.b)
     def __sub__(self, other): return ComplexNumber(self.a-other.a, self.b-other.b)
     def __mul__(self, other): return ComplexNumber(self.a*other.a-self.b*other.b, self.a*other.b+self.b*other.a)
-    def __div__(self, other): return self.__truediv__(other)
     def __truediv__(self, other): return ComplexNumber((self.a*other.conjugate().a-self.b*other.conjugate().b)/(other*other.conjugate()).real(), (self.a*other.conjugate().b+self.b*other.conjugate().a)/(other*other.conjugate()).real())
     def __pow__(self, val):
         assert type(val) == int, "Cannot raise complex number to a decimal (yet)"
@@ -29,7 +28,7 @@ class ComplexNumber:
             return num
         elif val < 0:
             for _ in range(-val-1): num = self.__mul__(num)
-            return ComplexNumber(1).__div__(num)
+            return ComplexNumber(1).__truediv__(num)
     def __abs__(self): return (self.a**2+self.b**2)**0.5
     def __neg__(self): return ComplexNumber(-self.a, -self.b)
     def __pos__(self): return self
