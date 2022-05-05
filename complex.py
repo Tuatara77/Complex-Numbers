@@ -43,5 +43,5 @@ class ComplexNumber:
         return atan(self.b/self.a)
     def convert_modulus_argument(self) -> str: 
         """Returns the complex number in modulus-argument form"""
-        return f"{self.modulus()}(cos({self.argument()})+isin({self.argument()}))"
+        return f"{self.modulus()}(cos({self.arg()})+isin({self.arg()}))"
 
